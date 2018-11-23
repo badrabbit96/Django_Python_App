@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Dane społecznościowe</title>
+    <!-- Favicon-->
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{% static '/plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom Css -->
+
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="{% static '/css/themes/all-themes.css' %} " rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+   
+    
+	
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">             
+                <a class="navbar-brand" href="index.html">{{ myName }}</a>
+            </div>         
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+	
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Źródło danych: wikipedia.org</h2>
+				
+            </div>
+
+            <!-- Widgets -->
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-indigo hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">face</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Liczba ludności</div>
+                            <div class="number count-to" data-from="0" data-to="38434000" data-speed="1" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-red hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">favorite</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Urodzenia w 2017</div>
+                            <div class="number count-to" data-from="0" {{ w_1 | safe}} data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-grey hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">access_alarm</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Zgony w 2017</div>
+                            <div class="number count-to" data-from="0" {{ w_2 | safe}} data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">person_add</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Przyrost naturalny w 2017</div>
+                            <div class="number count-to" data-from="0" {{ w_3 | safe}} data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Liczba ludności na przestrzeni lat po II Wojnie Światowej:</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="body">
+                           <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# CPU Usage -->
+            
+
+            <div class="row clearfix">
+                <!-- Task Info -->
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Mniejszości narodowe:</h2>
+                            
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+
+                                <table class="table table-hover table-bordered dashboard-task-infos">
+                                    <thead class="bg-indigo">
+                                        <tr>
+                                            <th>Lp.</th>
+                                            <th>Przynależność</th>
+                                            <th>Suma</th>
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {{ m_n_tabela | safe }}
+
+                                    </tbody>
+                                </table>
+								
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
+                <!-- Browser Usage -->
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Mniejszości narodowe (%):</h2>
+                           
+                        </div>
+                        <div class="body">
+                            <br>
+                            <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Browser Usage -->
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Ludność według województw:</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body">
+                        <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Porównanie populacji przed i po II Wojnie Światowej:</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body">
+                        <div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+				
+	            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Porównanie populacji Francji oraz Polski w okresie II Wojny Światowej:</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body">
+				        <div id="chartContainer5" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Bezrobocie w polsce:</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body">
+				        <table class="table table-bordered">
+  <thead class="bg-indigo">
+    <tr>
+      <th scope="col">Rok</th>
+      <th scope="col">Styczeń</th>
+      <th scope="col">Luty</th>
+      <th scope="col">Marzec</th>
+        <th scope="col">Kwiecień</th>
+        <th scope="col">Maj</th>
+        <th scope="col">Czerwiec</th>
+        <th scope="col">Lipiec</th>
+        <th scope="col">Sierpień</th>
+        <th scope="col">Wrzesień</th>
+        <th scope="col">Październik</th>
+        <th scope="col">Listopad</th>
+        <th scope="col">Grudzień</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ data_points_6 | safe }}
+  </tbody>
+</table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row clearfix">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-deep-orange hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Największe bezrobocie: </div>
+                            <div class="number count-to" data-from="0" data-to="{{ max_rok | safe }}" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-blue hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Najmniejsze bezrobocie:</div>
+                            <div class="number count-to" data-from="0" data-to="{{ min_rok | safe }}" data-speed="1000" data-fresh-interval="20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-purple hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Miesiąc z największyn bezrobociem:</div>
+                            <div class="number">styczeń</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-teal hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">equalizer</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">Miesiąc z najmniejszym bezrobociem:</div>
+                            <div class="number">sierpień</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="card">
+                        <div class="header bg-orange">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>Analiza bezrobocia na przestrzeni roku: </h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="body">
+				        <div id="chartContainer6" style="height: 300px; width: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="{% static 'plugins/bootstrap-select/js/bootstrap-select.js' %}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins/morrisjs/morris.js' %}"></script>
+
+   
+    <!-- Flot Charts Plugin Js -->
+    <script src="{% static 'plugins/flot-charts/jquery.flot.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.categories.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.time.js' %}"></script>
+
+    <!-- dane wejsciowe -->
+    <script src="{% static 'js/pages/index.js' %}"></script>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <script>
+    window.onload = function () {
+
+    var chart1 = new CanvasJS.Chart("chartContainer1", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: ""
+	},
+	data: [{
+		type: "column", //change type to bar, line, area, pie, etc
+		//indexLabel: "{y}", //Shows y value on all Data Points
+		indexLabelFontColor: "#5A5757",
+		indexLabelPlacement: "outside",
+		dataPoints: [
+			{{ data_points_2 | safe }}
+		]
+	}]
+});
+chart1.render();
+
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+	theme: "light2",
+	animationEnabled: true,
+	title: {
+		text: ""
+	},
+	subtitles: [{
+		text: "",
+		fontSize: 16
+	}],
+	data: [{
+		type: "pie",
+		indexLabelFontSize: 18,
+		radius: 80,
+		indexLabel: "{label} - {y}",
+		yValueFormatString: "###0.0\"%\"",
+		click: explodePie,
+		dataPoints: [
+			{{ data_points | safe }}
+		]
+	}]
+});
+chart2.render();
+
+function explodePie(e) {
+	for(var i = 0; i < e.dataSeries.dataPoints.length; i++) {
+		if(i !== e.dataPointIndex)
+			e.dataSeries.dataPoints[i].exploded = false;
+	}
+}
+
+
+var chart3 = new CanvasJS.Chart("chartContainer3", {
+	theme: "light",
+	exportFileName: "Doughnut Chart",
+	exportEnabled: false,
+	animationEnabled: true,
+	title:{
+		text: ""
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "doughnut",
+		innerRadius: 70,
+		showInLegend: true,
+		toolTipContent: "<b>{name}</b>: {y},000",
+		indexLabel: "{name}",
+		dataPoints: [
+			{{ data_points_3 | safe }}
+		]
+	}]
+});
+chart3.render();
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart3.render();
+}
+
+var chart4 = new CanvasJS.Chart("chartContainer4", {
+	animationEnabled: true,
+	title:{
+		text: ""
+	},
+	axisY: {
+		title: "Liczba ludności",
+		valueFormatString: "#0,,.",
+		suffix: "mln.",
+		stripLines: [{
+			value: 30000000,
+			label: "Średnia"
+		}]
+	},
+	data: [{
+		yValueFormatString: "#,### ",
+		xValueFormatString: "YYYY",
+		type: "spline",
+		dataPoints: [
+			{{ data_points_4 | safe }}
+		]
+	}]
+});
+chart4.render();
+
+
+
+var chart5 = new CanvasJS.Chart("chartContainer5", {
+	animationEnabled: true,
+	zoomEnabled: true,
+	theme: "dark2",
+	title:{
+		text: ""
+	},
+	axisX:{
+		title: "Rok",
+		valueFormatString: "####",
+		interval: 2
+	},
+	axisY:{
+		logarithmic: true, //change it to false
+		title: "Polska",
+		titleFontColor: "#6D78AD",
+		lineColor: "#6D78AD",
+		gridThickness: 0,
+		lineThickness: 1,
+		includeZero: false,
+		labelFormatter: addSymbols
+	},
+	axisY2:{
+		title: "Francja",
+		titleFontColor: "#51CDA0",
+		logarithmic: false, //change it to true
+		lineColor: "#51CDA0",
+		gridThickness: 0,
+		lineThickness: 1,
+		labelFormatter: addSymbols
+	},
+	legend:{
+		verticalAlign: "top",
+		fontSize: 16,
+		dockInsidePlotArea: true
+	},
+	data: [{
+		type: "line",
+		xValueFormatString: "####",
+		showInLegend: true,
+		name: "Polska",
+		dataPoints: [
+			{{ data_points_5_2 | safe }}
+		]
+	},
+	{
+		type: "line",
+		xValueFormatString: "####",
+		axisYType: "secondary",
+		showInLegend: true,
+		name: "Francja",
+		dataPoints: [
+			{{ data_points_5_1 | safe }}
+		]
+	}]
+});
+chart5.render();
+
+function addSymbols(e){
+	var suffixes = ["", "K", " mln.", "B"];
+
+	var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
+	if(order > suffixes.length - 1)
+		order = suffixes.length - 1;
+
+	var suffix = suffixes[order];
+	return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
+}
+
+var chart6 = new CanvasJS.Chart("chartContainer6", {
+	animationEnabled: true,
+	title: {
+		text: ""
+	},
+	axisX: {
+		title: "Miesiąc"
+	},
+	axisY: {
+		title: "Procent",
+		suffix: "%"
+	},
+	data: [{
+		type: "line",
+		name: "CPU Utilization",
+		connectNullData: true,
+		//nullDataLineDashType: "solid",
+
+		dataPoints: [
+			{{ data_points_6_1 | safe }}
+
+		]
+	}]
+});
+chart6.render();
+
+}
+</script>
+
+
+</body>
+
+</html>
